@@ -10,15 +10,15 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController.cameraTabDefaultPage', {
-    url: '/page2',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/cameraTabDefaultPage.html',
-        controller: 'cameraTabDefaultPageCtrl'
-      }
-    }
-  })
+ //     .state('tabsController.cameraTabDefaultPage', {
+  //  url: '/page2',
+  //  views: {
+ //     'tab1': {
+ //       templateUrl: 'templates/cameraTabDefaultPage.html',
+//        controller: 'cameraTabDefaultPageCtrl'
+ //     }
+ //   }
+//  })
 
   .state('tabsController.cartTabDefaultPage', {
     url: '/page3',
@@ -26,6 +26,16 @@ angular.module('app.routes', [])
       'tab2': {
         templateUrl: 'templates/cartTabDefaultPage.html',
         controller: 'cartTabDefaultPageCtrl'
+      }
+    }
+  })
+  
+  .state('tabsController.allChalan', {
+    url: '/page2',
+    views: {
+      'tab4': {
+        templateUrl: 'templates/allChalan.html',
+        controller: 'allChalanCtrl'
       }
     }
   })
@@ -49,7 +59,17 @@ angular.module('app.routes', [])
    .state('login', {
     url: '/page5',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'loginCtrl',
+    
+    resolve: {
+            // controller will not be loaded until $waitForAuth resolves
+            // Auth refers to our $firebaseAuth wrapper in the example above
+            "currentAuth": ["Auth",
+                function (Auth) {
+                    // $waitForAuth returns a promise so the resolve waits for it to complete
+                    return Auth.$waitForAuth();
+        }]
+        }
   })
 
 $urlRouterProvider.otherwise('/page5')

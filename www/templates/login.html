@@ -7,17 +7,16 @@
                 </div>
            </div>
            <div class="col button-row">
-               <label class="item item-input item-floating-label">
-                    <span class="input-label">UserId</span>
-                    <input type="text" placeholder="UserId">
-               </label>
+              <label class="item item-input">
+                <input type="text" placeholder="UserId" ng-bind="user.email">
+            </label>
            </div>
            <div class="col button-row">
-               <label class="item item-input item-floating-label">
-                    <span class="input-label">Password</span>
-                    <input type="password" placeholder="Password">  
-                </label>
+               <label class="item item-input">
+                <input type="password" placeholder="Password" ng-bind="user.password">
+            </label>
            </div>
+            
            <div class="col button-row">
                <button class="button button-clear button-royal" ng-click="login()">
                 Login
